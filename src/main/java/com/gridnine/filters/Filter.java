@@ -4,6 +4,7 @@ import com.gridnine.testing.Flight;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class Filter {
     protected static LinkedList<Flight> flights;
