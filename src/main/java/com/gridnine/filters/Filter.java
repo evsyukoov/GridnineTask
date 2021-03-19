@@ -1,4 +1,6 @@
-package com.gridnine.testing;
+package com.gridnine.filters;
+
+import com.gridnine.testing.Flight;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,17 +18,21 @@ public class Filter {
     public Filter() {
     }
 
-    public void     addFiltrationType(Filter f)
+    public void     addFiltration(Filter f)
     {
+        if (f == null)
+            throw new IllegalArgumentException("Null pointer of filtration");
         filters.add(f);
     }
 
     public void filter()
     {
         for (Filter f : filters) {
-            f.doFiltration();
+            f.filter();
         }
     }
 
-    public void doFiltration(){};
+    public static LinkedList<Flight> getFlights() {
+        return flights;
+    }
 }

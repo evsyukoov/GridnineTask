@@ -1,12 +1,14 @@
-package com.gridnine.testing;
+package com.gridnine.filters;
 
-import java.util.List;
+import com.gridnine.testing.Flight;
+import com.gridnine.testing.Segment;
+
 import java.util.ListIterator;
 
 public class BrokenTimeSegmentFilter extends Filter {
 
     @Override
-    public void doFiltration() {
+    public void filter() {
         ListIterator<Flight> iterator = flights.listIterator();
         while (iterator.hasNext())
         {
