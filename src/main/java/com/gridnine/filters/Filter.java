@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class Filter {
-    protected static LinkedList<Flight> flights;
+    private LinkedList<Flight> flights;
 
     private List<Filter> filters;
 
     public Filter(List<Flight> flights) {
-        Filter.flights = new LinkedList<>(flights);
+        this.flights = new LinkedList<>(flights);
         filters = new LinkedList<>();
     }
 
@@ -26,14 +26,31 @@ public class Filter {
         filters.add(f);
     }
 
+    public void     removeFiltration(Filter f)
+    {
+        if (f == null)
+            throw new IllegalArgumentException("Null pointer of filtration");
+        filters.remove(f);
+    }
+
     public void filter()
     {
-        for (Filter f : filters) {
-            f.filter();
+        ListIterator<Flight> iterator = flights.listIterator();
+        while (iterator.hasNext()) {
+            Flight flight = iterator.next();
+            for (Filter f : filters) {
+                if (f.filter(flight))
+                {
+                    iterator.remove();
+                    break;
+                }
+            }
         }
     }
 
-    public static LinkedList<Flight> getFlights() {
+    protected boolean    filter(Flight flight){return true;}
+
+    public LinkedList<Flight> getFlights() {
         return flights;
     }
 }

@@ -21,7 +21,7 @@ public class LongTransferFilterTest {
         sourceFlights.remove(sourceFlights.size() - 1);
         f.addFiltration(ltf);
         f.filter();
-        assertEquals(sourceFlights, Filter.getFlights());
+        assertEquals(sourceFlights, f.getFlights());
     }
 
     @Test
@@ -32,6 +32,6 @@ public class LongTransferFilterTest {
         sourceFlights.remove(2);
         f.addFiltration(ltf);
         f.filter();
-        assertEquals(sourceFlights, Filter.getFlights());
+        assertEquals(sourceFlights, f.getFlights());
     }
 }

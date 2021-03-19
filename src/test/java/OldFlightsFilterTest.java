@@ -19,7 +19,7 @@ public class OldFlightsFilterTest {
         sourceFlights.remove(2);
         f.addFiltration(olff);
         f.filter();
-        assertEquals(sourceFlights, Filter.getFlights());
+        assertEquals(sourceFlights, f.getFlights());
     }
 
     @Test
@@ -30,6 +30,6 @@ public class OldFlightsFilterTest {
         sourceFlights.remove(3);
         f.addFiltration(olff);
         f.filter();
-        assertEquals(sourceFlights, Filter.getFlights());
+        assertEquals(sourceFlights, f.getFlights());
     }
 }

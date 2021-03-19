@@ -8,17 +8,12 @@ import java.util.ListIterator;
 public class BrokenTimeSegmentFilter extends Filter {
 
     @Override
-    public void filter() {
-        ListIterator<Flight> iterator = flights.listIterator();
-        while (iterator.hasNext())
-        {
-            for (Segment segment : iterator.next().getSegments()) {
-                if (segment.getArrivalDate().compareTo(segment.getDepartureDate()) < 0)
-                {
-                    iterator.remove();
-                    break ;
-                }
+    protected boolean filter(Flight flight) {
+        for (Segment segment : flight.getSegments()) {
+            if (segment.getArrivalDate().compareTo(segment.getDepartureDate()) < 0) {
+                return true;
             }
         }
+        return false;
     }
 }

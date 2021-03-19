@@ -22,7 +22,7 @@ public class BrokenTimeSegmentFilterTest {
         sourceFlights.remove(3);
         f.addFiltration(btsf);
         f.filter();
-        assertEquals(sourceFlights, Filter.getFlights());
+        assertEquals(sourceFlights, f.getFlights());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class BrokenTimeSegmentFilterTest {
         sourceFlights.remove(2);
         f.addFiltration(btsf);
         f.filter();
-        assertEquals(sourceFlights, Filter.getFlights());
+        assertEquals(sourceFlights, f.getFlights());
     }
 
 }

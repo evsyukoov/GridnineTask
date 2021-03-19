@@ -11,21 +11,15 @@ import java.util.ListIterator;
 public class LongTransferFilter extends Filter {
 
     @Override
-    public void filter() {
-        ListIterator<Flight> iterator = flights.listIterator();
-        while (iterator.hasNext())
-        {
-           long sum = 0;
-            List<Segment> segments = iterator.next().getSegments();
-            for (int i = 0; i < segments.size() - 1; i++) {
-                Duration d =  Duration.between(segments.get(i).getArrivalDate(), segments.get(i + 1).getDepartureDate());
-                sum += d.toMillis();
-                if (sum > 7200000)
-                {
-                    iterator.remove();
-                    break ;
-                }
-            }
+    protected boolean    filter(Flight flight) {
+        long sum = 0;
+        List<Segment> segments = flight.getSegments();
+        for (int i = 0; i < segments.size() - 1; i++) {
+            Duration d =  Duration.between(segments.get(i).getArrivalDate(), segments.get(i + 1).getDepartureDate());
+            sum += d.toMillis();
+            if (sum > 7200000)
+                return true;
         }
+        return false;
     }
 }
